@@ -4,7 +4,7 @@
 $dbHost = "localhost";
 $dbUser = "root";
 $dbPass = "";
-$dbDatabase = "";
+$dbDatabase = "webmbprudb";
 
 //connet to the database
 

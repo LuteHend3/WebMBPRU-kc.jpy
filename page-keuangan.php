@@ -1,18 +1,24 @@
+<?php
+session_start();
+if (!isset($_SESSION['email'])) {
+  die("Anda belum login");
+}
+if ($_SESSION['id_divisi']!="2") {
+  die("Anda bukan Keuangan");
+}
+?>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
-  <title>Admin Menu</title>
+  <title>Keuangan Menu</title>
   <link rel='stylesheet' href='css/bootstrap.min.css'>
   <link rel="stylesheet" href="css/style.css">
-  
-
 </head>
 <body>
 
   <div class="header">
   <div class="logo">
-    Ini Dashboard Admin
+    Ini Dashboard Keuangan
   </div>
 </div>
 <div class="sidebar">
@@ -22,8 +28,7 @@
     <li><a href="#"><i class="fa fa-calendar"></i><span>Calendar</span></a></li>
     <li><a href="#"><i class="fas fa-envelope"></i><span>Messages</span></a></li>
     <li><a href="#"><i class="fa fa-table"></i><span>Data Table</span></a></li>
-    <li><a href="#"><i class="fa fa-power-off" style="color:red"></i><span>Logout</span></a></li>
-
+    <li><a href="logout.php"><i class="fa fa-power-off" style="color:red"></i><span>Logout</span></a></li>
 </div>
 
 <!-- Content -->
@@ -36,7 +41,6 @@
     </div>
     <p>Keffiyeh banjo keytar selfies. Actually plaid PBR&amp;B, High Life dreamcatcher kale chips master cleanse craft beer messenger bag locavore Brooklyn Blue Bottle. Freegan literally brunch kale chips small batch. Etsy iPhone gentrify photo booth. Lomo
       keffiyeh vinyl, distillery pop-up messenger bag kale chips post-ironic DIY 90's keytar. Intelligentsia next level Pitchfork forage vinyl Marfa, normcore heirloom. Drinking vinegar asymmetrical roof party, yr artisan Carles mixtape jean shorts.</p>
-
     <table class="table table-bordered">
       <thead>
         <tr>
