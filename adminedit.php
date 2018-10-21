@@ -54,8 +54,75 @@ if ($_SESSION['id_divisi']!="5") {
     <p>Keffiyeh banjo keytar selfies. Actually plaid PBR&amp;B, High Life dreamcatcher kale chips master cleanse craft beer messenger bag locavore Brooklyn Blue Bottle. Freegan literally brunch kale chips small batch. Etsy iPhone gentrify photo booth. Lomo
       keffiyeh vinyl, distillery pop-up messenger bag kale chips post-ironic DIY 90's keytar. Intelligentsia next level Pitchfork forage vinyl Marfa, normcore heirloom. Drinking vinegar asymmetrical roof party, yr artisan Carles mixtape jean shorts.</p>
 
-     
-  <div class="panel-group">
+
+  
+  <div class="panel panel-default">
+  <div class="panel-heading">EDIT DATA</div>
+  <div class="panel-body">
+         <?php
+    require_once('koneksi.php');
+    $id = $_GET['id_karyawan'];
+    $result = mysql_query("SELECT * FROM karyawan WHERE id_karyawan='$id'") or die(mysql_error());
+    $no=1; 
+    while ($data = mysql_fetch_array($result)) { //fetch the result from query into an array
+    ?>
+    <form action="adminupdate.php" method="POST"> 
+        <div class="form-group">
+       <label for="id_karyawan">ID Karyawan : </label>
+       <input type="text" class="form-control" id="id_karyawan" name="id_karyawan" readonly="" value="<?php echo $data['id_karyawan'] ?>">  
+        </div>        
+
+
+        <div class="form-group">
+       <label for="id_divisi">ID Divisi : </label>
+       <input type="text" class="form-control" id="id_divisi" name="id_divisi" required="required" value="<?php echo $data['id_divisi'] ?>">  
+        </div>        
+
+        <div class="form-group">
+       <label for="nama">Nama : </label>
+       <input type="text" class="form-control" id="nama" name="nama" required="required" value="<?php echo $data['nama'] ?>">  
+        </div>       
+
+        <div class="form-group">
+       <label>Jenis Kelamin : </label>
+       <?php $jk = $data['Jenis_kelamin']; ?>
+       <label class="radio-inline"><input type="radio" name="Jenis_kelamin" value="L" checked="" <?php echo ($jk == 'L') ? "checked": "" ?>>Laki-Laki</label>
+       <label class="radio-inline"><input type="radio" name="Jenis_kelamin" value="P" <?php echo ($jk == 'P') ? "checked": "" ?>>Perempuan</label>  
+        </div>      
+
+        <div class="form-group">
+       <label for="email">Email : </label>
+       <input type="email" class="form-control" id="email" name="email" required="required" value="<?php echo $data['email'] ?>">  
+        </div>      
+
+        <div class="form-group">
+       <label for="password">Password : </label>
+       <input type="password" class="form-control" id="password" name="password" required="required" placeholder="Re-Enter Your Password" >  
+        </div>      
+
+        <div class="form-group">
+        <label for="alamat">Alamat : </label>
+        <input type="text" class="form-control" id="alamat" name="alamat" required="required" value="<?php echo $data['alamat'] ?>"> 
+        </div>      
+
+        <div class="form-group">
+        <label for="no_telp">No. Telpon : </label>
+        <input type="text" class="form-control" id="no_telp" name="no_telp" required="required" value="<?php echo $data['no_telp'] ?>">
+        </div> 
+
+        <div class="form-group">
+        <button type="submit" value="update" class="btn btn-primary">Update</button>
+        </div>     
+
+  </form>
+
+</div>
+</div>
+       <?php 
+    }
+      ?>
+
+       <div class="panel-group">
   <div class="panel panel-default" >
     <div class="panel-heading" style="background-color: rgb(51, 122, 183);">
       <h4 class="panel-title">
@@ -141,6 +208,7 @@ if(isset($_GET['pesan'])){
   }
 }
 ?>
+      
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -184,7 +252,7 @@ if(isset($_GET['pesan'])){
       ?>
       </tbody>
     </table>
-
+    
 
     <p>Slow-carb fanny pack yr Brooklyn gentrify. Fanny pack keffiyeh taxidermy, ugh viral polaroid craft beer. +1 distillery Truffaut typewriter tousled crucifix, lo-fi butcher normcore skateboard. Drinking vinegar ugh whatever sriracha. Synth tofu viral
       butcher flexitarian. 3 wolf moon Schlitz plaid small batch kale chips blog. Fingerstache selfies freegan, Helvetica Neutra Brooklyn semiotics cred narwhal beard tousled leggings.</p>
