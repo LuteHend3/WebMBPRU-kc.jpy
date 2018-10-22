@@ -73,8 +73,15 @@ if ($_SESSION['id_divisi']!="5") {
 
         <div class="form-group">
        <label for="id_divisi">ID Divisi : </label>
-       <input type="text" class="form-control" id="id_divisi" name="id_divisi" required="required">  
-        </div>        
+       <select class="form-control" id="id_divisi" name="id_divisi" required="required">
+        <option selected="">- PILIH DIVISI -</option>
+        <option value="1">Divisi BDD</option>
+        <option value="2">Divisi Keuangan</option>
+        <option value="3">Divisi Administrasi</option>
+        <option value="4">Divisi Teknik</option>
+        <option value="5">Admin</option>
+       </select>
+       </div>        
 
         <div class="form-group">
        <label for="nama">Nama : </label>
@@ -99,7 +106,7 @@ if ($_SESSION['id_divisi']!="5") {
 
         <div class="form-group">
         <label for="alamat">Alamat : </label>
-        <input type="text" class="form-control" id="alamat" name="alamat" required="required"> 
+        <textarea class="form-control" id="alamat" name="alamat" required="required" rows="3" style="resize: none;"></textarea>
         </div>      
 
         <div class="form-group">
