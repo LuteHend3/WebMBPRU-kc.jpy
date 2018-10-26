@@ -1,10 +1,10 @@
 <?php
 session_start();
 if (!isset($_SESSION['email'])) {
-  die("Anda belum login");
+  header("location: alertlogin.php");
 }
 if ($_SESSION['id_divisi']!="5") {
-  die("Anda bukan Admin");
+  header("location: alertlogin.php");
 }
 ?>
 <html lang="en">
@@ -35,7 +35,7 @@ if ($_SESSION['id_divisi']!="5") {
 
 <div class="sidebar">
   <ul>
-    <li><a href="#"><i class="fa fa-desktop"></i><span>Desktop</span></a></li>
+    <li><a href="page-admin.php"><i class="fa fa-home"></i><span>Home</span></a></li>
     <li><a href="#"><i class="fa fa-server"></i><span>Server</span></a></li>
     <li><a href="#"><i class="fa fa-calendar"></i><span>Calendar</span></a></li>
     <li><a href="#"><i class="fas fa-envelope"></i><span>Messages</span></a></li>
@@ -206,6 +206,45 @@ if(isset($_GET['pesan'])){
       </div>
     </div>
   </div>
+
+
+<div class="footer">
+    <table width="100%" border="1" style="border-style: groove;">
+     <tr>
+       <td width="30%">
+        <div align="center">
+          <?php
+$array_hari = array(1=>'Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu');
+$hari = $array_hari[date('N')];
+
+$array_bulan = array(1=>'Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember');
+$bulan = $array_bulan[date('n')];
+
+$tgl = date('j');
+$thn = date('Y'); 
+
+echo $hari.", ".$tgl." ".$bulan." ".$thn ;
+
+?> 
+
+       </div>
+     </td>
+       <td width="40%">
+        <div align="center">
+          <font color="#000000">
+Selamat Datang : <strong><?php echo $_SESSION['nama']?></strong></font>
+</div>
+</td>
+       <td width="30%">
+        <div align="center">
+       Divisi : <strong><?php echo $_SESSION['nama_divisi'] ?></strong>
+       </div>
+       </td>
+     </tr>
+   </table>
+
+</div>
+
 </div>
   <script src='js/jquery.min.js'></script>
   <script src="js/index.js"></script>

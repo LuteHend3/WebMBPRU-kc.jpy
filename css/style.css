@@ -304,3 +304,15 @@ p {
     display: block;
     margin-top: 10px;
 }
+
+.footer {
+ position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #FFFFFF;
+  width: 100%;
+  line-height: 50px;
+  color: #fff;
+
+  }

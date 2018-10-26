@@ -104,11 +104,6 @@ if ($_SESSION['id_divisi']!="5") {
         </div>      
 
         <div class="form-group">
-       <label for="password">Password : </label>
-       <input type="password" class="form-control" id="password" name="password" required="required" placeholder="Re-Enter Your Password" >  
-        </div>      
-
-        <div class="form-group">
         <label for="alamat">Alamat : </label>
         <textarea class="form-control" id="alamat" name="alamat" required="required" rows="3" style="resize: none;"><?php echo $data['alamat'] ?></textarea>
 
@@ -118,6 +113,11 @@ if ($_SESSION['id_divisi']!="5") {
         <label for="no_telp">No. Telpon : </label>
         <input type="text" class="form-control" id="no_telp" name="no_telp" required="required" value="<?php echo $data['no_telp'] ?>">
         </div> 
+
+        <div class="form-group">
+       <label for="password">Password : </label>
+       <input type="password" class="form-control" id="password" name="password" required="required" placeholder="Re-Enter Your Password" >  
+        </div>   
 
         <div class="form-group">
         <button type="submit" value="update" class="btn btn-primary">Update</button>

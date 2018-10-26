@@ -2,10 +2,11 @@
 session_start();
 include"koneksi.php";
 if (!isset($_SESSION['email'])) {
-  die("Anda belum login");
+  header("location: alertlogin.php");
 }
 if ($_SESSION['id_divisi']!="3") {
-  die("Anda bukan Administrasi");
+ // die("Anda bukan Administrasi");
+    header("location: alertlogin.php");
 }
 ?>
 <html lang="en">
@@ -95,6 +96,44 @@ if ($_SESSION['id_divisi']!="3") {
       </div>
     </div>
   </div>
+
+  <div class="footer">
+    <table width="100%" border="1" style="border-style: groove;">
+     <tr>
+       <td width="30%">
+        <div align="center">
+          <?php
+$array_hari = array(1=>'Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu');
+$hari = $array_hari[date('N')];
+
+$array_bulan = array(1=>'Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember');
+$bulan = $array_bulan[date('n')];
+
+$tgl = date('j');
+$thn = date('Y'); 
+
+echo $hari.", ".$tgl." ".$bulan." ".$thn ;
+
+?> 
+
+       </div>
+     </td>
+       <td width="40%">
+        <div align="center">
+          <font color="#000000">
+Selamat Datang : <strong><?php echo $_SESSION['nama']?></strong></font>
+</div>
+</td>
+       <td width="30%">
+        <div align="center">
+       Divisi : <strong><?php echo $_SESSION['nama_divisi'] ?></strong>
+       </div>
+       </td>
+     </tr>
+   </table>
+
+</div>
+
 </div>
   <script src='js/jquery.min.js'></script>
   <script src="js/index.js"></script>
