@@ -12,7 +12,7 @@ $menit -= $jam * 60;
 $offset = sprintf('%+d:%02d', $tanda * $jam, $menit);
 
 mysql_connect("localhost","root",""); // isi sesuai host anda
-mysql_select_db("webmbprudbp"); // nama database yang  saya buat tadi
+mysql_select_db("webmbprudb"); // nama database yang  saya buat tadi
 
 mysql_query("SET time_zone = '$offset'")
 ?>

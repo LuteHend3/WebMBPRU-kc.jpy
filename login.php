@@ -13,7 +13,7 @@ if($op=="in"){
 		$_SESSION['nama']=$qry['nama'];
 		$_SESSION['id_divisi']=$qry['id_divisi'];
 		$_SESSION['nama_divisi']=$qry['nama_divisi'];
-
+		
 		if($qry['id_divisi']=="1"){
 			header("location:page-BDD.php");
 			}

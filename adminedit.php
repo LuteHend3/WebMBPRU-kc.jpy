@@ -1,10 +1,10 @@
 <?php
 session_start();
 if (!isset($_SESSION['email'])) {
-  die("Anda belum login");
+  header("location: alertlogin.php");
 }
 if ($_SESSION['id_divisi']!="5") {
-  die("Anda bukan Admin");
+  header("location: alertlogin.php");
 }
 ?>
 <html lang="en">
