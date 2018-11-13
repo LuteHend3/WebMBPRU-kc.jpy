@@ -71,27 +71,27 @@ if ($_SESSION['id_divisi']!="1") {
   <div class="panel-body">
          <?php
     require_once('koneksi.php');
-    $id = $_GET['id_spk'];
-    $result = mysql_query("SELECT * FROM spk WHERE id_spk='$id'") or die(mysql_error());
+    $id = $_GET['id_spki'];
+    $result = mysql_query("SELECT * FROM spki WHERE id_spki='$id'") or die(mysql_error());
     $no=1; 
     while ($data = mysql_fetch_array($result)) { //fetch the result from query into an array
     ?>
-    <form action="bddspkupdate.php" method="POST"> 
+    <form action="bddspkiupdate.php" method="POST"> 
         <div class="form-group">
-       <label for="id_spk">ID SPK : </label>
-       <input type="text" class="form-control" id="id_spk" name="id_spk" readonly="" value="<?php echo $data['id_spk'] ?>">  
+       <label for="id_spk">ID SPKI : </label>
+       <input type="text" class="form-control" id="id_spki" name="id_spki" readonly="" value="<?php echo $data['id_spki'] ?>">  
         </div>        
 
 
 
         <div class="form-group">
-       <label for="no_spk">Nomor SPK : </label>
-       <input type="text" class="form-control" id="no_spk" name="no_spk" required="required" value="<?php echo $data['no_spk'] ?>">  
+       <label for="no_spki">Nomor SPKI : </label>
+       <input type="text" class="form-control" id="no_spki" name="no_spki" required="required" value="<?php echo $data['no_spki'] ?>">  
         </div>         
 
       <div class="form-group">
-       <label for="tgl_spk">Tanggal SPK : </label>
-       <input type="text" class="form-control" id="tgl_spk" name="tgl_spk" required="required" value="<?php echo $data['tgl_spk'] ?>">  
+       <label for="tgl_spki">Tanggal SPKI : </label>
+       <input type="text" class="form-control" id="tgl_spki" name="tgl_spki" required="required" value="<?php echo $data['tgl_spki'] ?>">  
         </div>   
 
         <div class="form-group">
@@ -118,19 +118,19 @@ if ($_SESSION['id_divisi']!="1") {
       
       <form action="bddspkinput.php" method="POST"> 
         <div class="form-group">
-       <label for="id_spk">ID SPK : </label>
-       <input type="text" class="form-control" id="id_spk" name="id_spk" required="required">  
+       <label for="id_spk">ID SPKI : </label>
+       <input type="text" class="form-control" id="id_spki" name="id_spki" required="required">  
         </div>        
 
 
         <div class="form-group">
-       <label for="no_spk">Nomor SPK : </label>
-       <input type="text" class="form-control" id="no_spk" name="no_spk" required="required">  
+       <label for="no_spki">Nomor SPKI : </label>
+       <input type="text" class="form-control" id="no_spki" name="no_spki" required="required">  
         </div>       
                 
       <div class="form-group">
-       <label for="tgl_spk">Tanggal SPK : </label>
-       <input type="text" class="form-control" id="tgl_spk" name="tgl_spk" required="required">  
+       <label for="tgl_spki">Tanggal SPKI : </label>
+       <input type="text" class="form-control" id="tgl_spki" name="tgl_spki" required="required">  
         </div>   
 
         <div class="form-group">
@@ -171,9 +171,9 @@ if(isset($_GET['pesan'])){
       <thead>
         <tr>
           <th>#</th>
-          <th>ID SPK</th>
-          <th>Nomor SPK</th>
-          <th>Tanggal SPK</th>
+          <th>ID SPKI</th>
+          <th>Nomor SPKI</th>
+          <th>Tanggal SPKI</th>
 
           <th>Action</th>
         </tr>
@@ -183,18 +183,18 @@ if(isset($_GET['pesan'])){
 <?php
     require_once('koneksi.php');
     
-    $result = mysql_query("SELECT * FROM spk order by id_spk") or die(mysql_error());
+    $result = mysql_query("SELECT * FROM spki order by id_spki") or die(mysql_error());
     $no=1; 
     while ($data = mysql_fetch_array($result)) { //fetch the result from query into an array
     ?>
       <tr>
         <td><?php echo $no++; ?></td>         <!--menampilkan nomor dari variabel no-->
-        <td><?php echo $data['id_spk'] ?></td>    <!--menampilkan data id_karyawan dari tabel karyawan-->
-        <td><?php echo $data['no_spk']?></td>
-        <td><?php echo $data['tgl_spk'] ?></td>        
+        <td><?php echo $data['id_spki'] ?></td>    <!--menampilkan data id_karyawan dari tabel karyawan-->
+        <td><?php echo $data['no_spki']?></td>
+        <td><?php echo $data['tgl_spki'] ?></td>        
         <td>
-                        <a href="bddspkedit.php?id_spk=<?php echo $data['id_spk']; ?>"> Edit</a> |
-                        <a href="bddspkdel.php?id_spk=<?php echo $data['id_spk']; ?>" onClick="javascript: return confirm('Anda yakin akan menghapus SPK ini ?')" > Delete </a>   
+                        <a href="bddspkiedit.php?id_spki=<?php echo $data['id_spki']; ?>"> Edit</a> |
+                        <a href="bddspkidel.php?id_spki=<?php echo $data['id_spki']; ?>" onClick="javascript: return confirm('Anda yakin akan menghapus SPK ini ?')" > Delete </a>   
                     </td>
     
       </tr>
@@ -221,7 +221,7 @@ if(isset($_GET['pesan'])){
 <script>
 $(document).ready(function() {
  
-   $('#tgl_spk').datetimepicker();
+   $('#tgl_spki').datetimepicker();
  
  });
  </script>   

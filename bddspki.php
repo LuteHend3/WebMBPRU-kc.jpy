@@ -12,7 +12,7 @@ if ($_SESSION['id_divisi']!="1") {
 <html lang="en">
 <head>
 
-   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8">
   <title>BDD Menu</title>
   <link rel='stylesheet' href='css/bootstrap.min.css'>
@@ -32,8 +32,9 @@ if ($_SESSION['id_divisi']!="1") {
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
   <script src="js/index.js"></script>
-</head>
 
+
+</head>
 <body>
   <div class="header">
   <div class="logo">
@@ -65,47 +66,6 @@ if ($_SESSION['id_divisi']!="1") {
     <p>Keffiyeh banjo keytar selfies. Actually plaid PBR&amp;B, High Life dreamcatcher kale chips master cleanse craft beer messenger bag locavore Brooklyn Blue Bottle. Freegan literally brunch kale chips small batch. Etsy iPhone gentrify photo booth. Lomo
       keffiyeh vinyl, distillery pop-up messenger bag kale chips post-ironic DIY 90's keytar. Intelligentsia next level Pitchfork forage vinyl Marfa, normcore heirloom. Drinking vinegar asymmetrical roof party, yr artisan Carles mixtape jean shorts.</p>
 
-
-        <div class="panel panel-default">
-  <div class="panel-heading">EDIT DATA</div>
-  <div class="panel-body">
-         <?php
-    require_once('koneksi.php');
-    $id = $_GET['id_spk'];
-    $result = mysql_query("SELECT * FROM spk WHERE id_spk='$id'") or die(mysql_error());
-    $no=1; 
-    while ($data = mysql_fetch_array($result)) { //fetch the result from query into an array
-    ?>
-    <form action="bddspkupdate.php" method="POST"> 
-        <div class="form-group">
-       <label for="id_spk">ID SPK : </label>
-       <input type="text" class="form-control" id="id_spk" name="id_spk" readonly="" value="<?php echo $data['id_spk'] ?>">  
-        </div>        
-
-
-
-        <div class="form-group">
-       <label for="no_spk">Nomor SPK : </label>
-       <input type="text" class="form-control" id="no_spk" name="no_spk" required="required" value="<?php echo $data['no_spk'] ?>">  
-        </div>         
-
-      <div class="form-group">
-       <label for="tgl_spk">Tanggal SPK : </label>
-       <input type="text" class="form-control" id="tgl_spk" name="tgl_spk" required="required" value="<?php echo $data['tgl_spk'] ?>">  
-        </div>   
-
-        <div class="form-group">
-        <button type="submit" value="update" class="btn btn-primary">Update</button>
-        </div>     
-
-  </form>
-
-</div>
-</div>
-       <?php 
-    }
-      ?>
-
      
   <div class="panel-group">
   <div class="panel panel-default" >
@@ -116,21 +76,22 @@ if ($_SESSION['id_divisi']!="1") {
     </div>
     <div id="collapse1" class="panel-collapse collapse" style="margin-left: 10px; margin-right: 10px; padding-bottom: 5px; ">
       
-      <form action="bddspkinput.php" method="POST"> 
+      <form action="bddspkiinput.php" method="POST"> 
         <div class="form-group">
-       <label for="id_spk">ID SPK : </label>
-       <input type="text" class="form-control" id="id_spk" name="id_spk" required="required">  
+       <label for="id_spki">ID SPKI : </label>
+       <input type="text" class="form-control" id="id_spki" name="id_spki" required="required">  
         </div>        
 
 
         <div class="form-group">
-       <label for="no_spk">Nomor SPK : </label>
-       <input type="text" class="form-control" id="no_spk" name="no_spk" required="required">  
-        </div>       
-                
-      <div class="form-group">
-       <label for="tgl_spk">Tanggal SPK : </label>
-       <input type="text" class="form-control" id="tgl_spk" name="tgl_spk" required="required">  
+       <label for="no_spki">Nomor SPKI : </label>
+       <input type="text" class="form-control" id="no_spki" name="no_spki" required="required">  
+        </div>  
+
+       
+ <div class="form-group">
+       <label for="tgl_spki">Tanggal SPKI : </label>
+       <input type="text" class="form-control" id="tgl_spki" name="tgl_spki" required="required">  
         </div>   
 
         <div class="form-group">
@@ -139,6 +100,14 @@ if ($_SESSION['id_divisi']!="1") {
         </div>     
 
   </form>
+
+   <script>
+$(document).ready(function() {
+ 
+   $('#tgl_spki').datetimepicker();
+ 
+ });
+ </script>        
   
     </div>
   </div>
@@ -183,18 +152,18 @@ if(isset($_GET['pesan'])){
 <?php
     require_once('koneksi.php');
     
-    $result = mysql_query("SELECT * FROM spk order by id_spk") or die(mysql_error());
+    $result = mysql_query("SELECT * FROM spki order by id_spki") or die(mysql_error());
     $no=1; 
     while ($data = mysql_fetch_array($result)) { //fetch the result from query into an array
     ?>
       <tr>
         <td><?php echo $no++; ?></td>         <!--menampilkan nomor dari variabel no-->
-        <td><?php echo $data['id_spk'] ?></td>    <!--menampilkan data id_karyawan dari tabel karyawan-->
-        <td><?php echo $data['no_spk']?></td>
-        <td><?php echo $data['tgl_spk'] ?></td>        
+        <td><?php echo $data['id_spki'] ?></td>    <!--menampilkan data id_karyawan dari tabel karyawan-->
+        <td><?php echo $data['no_spki']?></td>
+        <td><?php echo $data['tgl_spki'] ?></td>        
         <td>
-                        <a href="bddspkedit.php?id_spk=<?php echo $data['id_spk']; ?>"> Edit</a> |
-                        <a href="bddspkdel.php?id_spk=<?php echo $data['id_spk']; ?>" onClick="javascript: return confirm('Anda yakin akan menghapus SPK ini ?')" > Delete </a>   
+                        <a href="bddspkiedit.php?id_spki=<?php echo $data['id_spki']; ?>"> Edit</a> |
+                        <a href="bddspkidel.php?id_spki=<?php echo $data['id_spki']; ?>" onClick="javascript: return confirm('Anda yakin akan menghapus SPKI ini ?')" > Delete </a>   
                     </td>
     
       </tr>
@@ -218,13 +187,6 @@ if(isset($_GET['pesan'])){
     </div>
   </div>
 
-<script>
-$(document).ready(function() {
- 
-   $('#tgl_spk').datetimepicker();
- 
- });
- </script>   
 
 <div class="footer">
     <table width="100%" border="1" style="border-style: groove;">

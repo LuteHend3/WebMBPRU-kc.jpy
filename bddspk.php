@@ -46,8 +46,10 @@ if ($_SESSION['id_divisi']!="1") {
 <div class="sidebar">
   <ul>
     <li><a href="page-BDD.php"><i class="fa fa-home"></i><span>Home</span></a></li>
-    <li><a href="#"><i class="fa fa-server"></i><span>Server</span></a></li>
-    <li><a href="#"><i class="fa fa-calendar"></i><span>Calendar</span></a></li>
+    <li><a href="#"><i class="fas fa-tasks"></i><span>Pengajuan</span></a></li>
+    <li><a href="bddspki.php"><i class="far fa-envelope"></i><span>Surat Perintah Kerja Internal</span></a></li>
+    <li><a href="bddspk.php"><i class="fas fa-envelope"></i><span>Surat Perintah Kerja</span></a></li>
+    <li><a href="#"><i class="fa fa-calendar"></i><span>Tugas</span></a></li>
     <li><a href="#"><i class="fas fa-envelope"></i><span>Messages</span></a></li>
     <li><a href="#"><i class="fa fa-table"></i><span>Data Table</span></a></li>
     <li><a href="logout.php"><i class="fa fa-power-off" style="color:red"></i><span>Logout</span></a></li>
