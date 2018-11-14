@@ -9,27 +9,13 @@ if ($_SESSION['id_divisi']!="5") {
 ?>
 <html lang="en">
 <head>
-
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8">
   <title>Admin Menu</title>
   <link rel='stylesheet' href='css/bootstrap.min.css'>
   <link rel="stylesheet" href="css/style.css">
-
-   <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<!-- <a href="https://www.jqueryscript.net/tags.php?/Bootstrap/">Bootstrap</a> theme -->
-<link rel="stylesheet" href="css/jquery.datetimepicker.css">
-
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="js/jquery.datetimepicker.full.js"></script> 
-
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-
+  <script src='js/jquery.min.js'></script>
+  <script src='js/bootstrap.min.js'></script> 
 </head>
 <body>
   <div class="header">
