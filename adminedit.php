@@ -12,7 +12,7 @@ if ($_SESSION['id_divisi']!="5") {
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8">
-  <title>Admin Menu</title>
+  <title>EDIT DATA</title>
   <link rel='stylesheet' href='css/bootstrap.min.css'>
   <link rel="stylesheet" href="css/style.css">
    <!-- Latest compiled and minified CSS -->
@@ -28,7 +28,7 @@ if ($_SESSION['id_divisi']!="5") {
 <body>
   <div class="header">
   <div class="logo">
-    Ini Dashboard Admin
+    EDIT DATA
   </div>
 </div>
 
@@ -117,6 +117,80 @@ if ($_SESSION['id_divisi']!="5") {
 
 </div>
 </div>
+       <?php 
+    }
+      ?>
+
+       <div class="panel-group">
+  <div class="panel panel-default" >
+    <div class="panel-heading" style="background-color: rgb(51, 122, 183);">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" href="#collapse1" style="color: white;">+ INPUT DATA</a>
+      </h4>
+    </div>
+    <div id="collapse1" class="panel-collapse collapse" style="margin-left: 10px; margin-right: 10px; padding-bottom: 5px; ">
+      
+     <form action="admininput.php" method="POST"> 
+        <div class="form-group">
+       <label for="id_karyawan">ID Karyawan : </label>
+       <input type="text" class="form-control" id="id_karyawan" name="id_karyawan" required="required">  
+        </div>        
+
+
+        <div class="form-group">
+       <label for="id_divisi">ID Divisi : </label>
+       <select class="form-control" id="id_divisi" name="id_divisi" required="required">
+        <option selected="">- PILIH DIVISI -</option>
+        <option value="1">Divisi BDD</option>
+        <option value="2">Divisi Keuangan</option>
+        <option value="3">Divisi Administrasi</option>
+        <option value="4">Divisi Teknik</option>
+        <option value="5">Admin</option>
+       </select>
+       </div>        
+
+        <div class="form-group">
+       <label for="nama">Nama : </label>
+       <input type="text" class="form-control" id="nama" name="nama" required="required">  
+        </div>       
+
+        <div class="form-group">
+       <label>Jenis Kelamin : </label>
+       <label class="radio-inline"><input type="radio" name="Jenis_kelamin" value="L" checked>Laki-Laki</label>
+       <label class="radio-inline"><input type="radio" name="Jenis_kelamin" value="P">Perempuan</label>  
+        </div>      
+
+        <div class="form-group">
+       <label for="email">Email : </label>
+       <input type="email" class="form-control" id="email" name="email" required="required">  
+        </div>      
+
+        <div class="form-group">
+       <label for="password">Password : </label>
+       <input type="password" class="form-control" id="password" name="password" required="required">  
+        </div>      
+
+        <div class="form-group">
+        <label for="alamat">Alamat : </label>
+        <textarea class="form-control" id="alamat" name="alamat" required="required" rows="3" style="resize: none;"></textarea>
+        </div>      
+
+        <div class="form-group">
+        <label for="no_telp">No. Telpon : </label>
+        <input type="text" class="form-control" id="no_telp" name="no_telp" required="required">
+        </div> 
+
+        <div class="form-group">
+        <button type="submit" value="simpan" class="btn btn-primary">Input</button>
+        <button type="Reset" class="btn btn-warning">Reset</button>
+        </div>     
+
+  </form>
+  
+    </div>
+  </div>
+</div> 
+      
     </div>
   </div>
 </div>
