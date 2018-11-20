@@ -11,8 +11,9 @@ if ($_SESSION['id_divisi']!="1") {
 ?>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
   <title>BDD Menu</title>
   <link rel='stylesheet' href='css/bootstrap.min.css'>
   <link rel="stylesheet" href="css/style.css">
@@ -32,14 +33,16 @@ if ($_SESSION['id_divisi']!="1") {
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
   <script src="js/index.js"></script>
 
+
 </head>
 <body>
-
   <div class="header">
   <div class="logo">
     Ini Dashboard BDD
   </div>
 </div>
+
+
 <div class="sidebar">
   <ul>
     <li><a href="page-BDD.php"><i class="fa fa-home"></i><span>Home</span></a></li>
@@ -54,7 +57,87 @@ if ($_SESSION['id_divisi']!="1") {
 
 <!-- Content -->
 <div class="main">
-  <div class="hipsum">
+  <div class="hipsum">    
+  <div class="panel-group">
+  <div class="panel panel-default" >
+    <div class="panel-heading" style="background-color: rgb(51, 122, 183);">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" href="#collapse1" style="color: white;">+ INPUT DATA</a>
+      </h4>
+    </div>
+    <div id="collapse1" class="panel-collapse collapse" style="margin-left: 10px; margin-right: 10px; padding-bottom: 5px; ">
+      
+      <form action="bddfeeinput.php" method="POST"> 
+        <div class="form-group">
+       <label for="id_fee">ID Fee: </label>
+       <input type="text" class="form-control" id="id_fee" name="id_fee" required="required">  
+        </div>        
+
+
+        <div class="form-group">
+       <label for="pro_fee">Pro Fee: </label>
+       <input type="text" class="form-control" id="pro_fee" name="pro_fee" onkeyup="sum();" required="required">  
+        </div>   
+
+       
+        <div class="form-group">
+       <label for="transport">Transport : </label>
+       <input type="text" class="form-control" id="transport" name="transport" onkeyup="sum();" required="required">  
+        </div>    
+
+         <div class="form-group">
+       <label for="fee_bank">Fee bank : </label>
+       <input type="text" class="form-control" id="fee_bank" name="fee_bank" onkeyup="sum();" required="required">  
+        </div>  
+
+         <div class="form-group">
+       <label for="ppn">PPN : </label>
+       <input type="text" class="form-control" id="ppn" name="ppn" onkeyup="sum();" required="required">  
+        </div>   
+
+        <div class="form-group">
+       <label for="fee_luar">Fee Luar : </label>
+       <input type="text" class="form-control" id="fee_luar" name="fee_luar" onkeyup="sum();" required="required">  
+        </div>   
+
+        <div class="form-group">
+       <label for="total">Total : </label>
+       <input type="text" class="form-control" id="total" name="total" required="required">  
+        </div>      
+
+        <div class="form-group">
+        <button type="submit" value="simpan" class="btn btn-primary">Input</button>
+        <button type="Reset" class="btn btn-warning">Reset</button>
+        </div>     
+
+  </form>
+
+   <script>
+$(document).ready(function() {
+ 
+   $('#tgl_spk').datetimepicker();
+ 
+ });
+ </script>    
+
+
+ <script>
+function sum() {
+      var txtFirstNumberValue = document.getElementById('pro_fee').value;
+      var txtSecondNumberValue = document.getElementById('transport').value;
+      var txtThirdNumberValue = document.getElementById('fee_bank').value;
+      var txtFourthNumberValue = document.getElementById('ppn').value;
+      var txtFifthNumberValue = document.getElementById('fee_luar').value;
+      var result = parseInt(txtFirstNumberValue) + parseInt(txtSecondNumberValue) + parseInt(txtThirdNumberValue)  + parseInt(txtFourthNumberValue)  + parseInt(txtFifthNumberValue);
+      if (!isNaN(result)) {
+         document.getElementById('total').value = result;
+      }
+}
+</script>    
+  
+    </div>
+  </div>
+</div> 
   <?php 
 if(isset($_GET['pesan'])){
   $pesan = $_GET['pesan'];
@@ -83,11 +166,14 @@ if(isset($_GET['pesan'])){
       <thead>
         <tr>
           <th>#</th>
-          <th>ID BDD</th>
           <th>ID Fee</th>
-          <th>ID Surat</th>
-          <th>ID Pemberi Tugas</th>
-          <th>ID Objek Penilaian</th>
+          <th>Pro Fee</th>
+          <th>Transport</th>
+          <th>Fee Bank</th>
+          <th>PPN</th>
+          <th>Fee Luar</th>
+          <th>Total</th>
+
           <th>Action</th>
         </tr>
 
@@ -96,20 +182,22 @@ if(isset($_GET['pesan'])){
 <?php
     require_once('koneksi.php');
     
-    $result = mysql_query("SELECT * FROM bdd order by id_bdd") or die(mysql_error());
+    $result = mysql_query("SELECT * FROM fee order by id_fee") or die(mysql_error());
     $no=1; 
     while ($data = mysql_fetch_array($result)) { //fetch the result from query into an array
     ?>
       <tr>
         <td><?php echo $no++; ?></td>         <!--menampilkan nomor dari variabel no-->
-        <td><?php echo $data['id_bdd'] ?></td>    <!--menampilkan data id_karyawan dari tabel karyawan-->
-        <td><?php echo $data['id_fee']?></td>
-        <td><?php echo $data['id_surat'] ?></td>     
-        <td><?php echo $data['id_tugas'] ?></td>     
-        <td><?php echo $data['id_objek'] ?></td>      
+        <td><?php echo $data['id_fee'] ?></td>    <!--menampilkan data id_karyawan dari tabel karyawan-->
+        <td><?php echo $data['pro_fee']?></td>
+        <td><?php echo $data['transport'] ?></td>        
+        <td><?php echo $data['fee_bank'] ?></td>        
+        <td><?php echo $data['ppn'] ?></td>        
+        <td><?php echo $data['fee_luar'] ?></td>        
+        <td><?php echo $data['total'] ?></td>        
         <td>
-                        <a href="bddedit.php?id_bdd=<?php echo $data['id_bdd']; ?>"> Edit </a> |
-                        <a href="bdddel.php?id_bdd=<?php echo $data['id_bdd']; ?>" onClick="javascript: return confirm('Anda yakin akan menghapus data ini ?')" > Delete </a>   
+                        <a href="bddfeeedit.php?id_fee=<?php echo $data['id_fee']; ?>"> Edit</a> |
+                        <a href="bddfeedel.php?id_fee=<?php echo $data['id_fee']; ?>" onClick="javascript: return confirm('Anda yakin akan menghapus Fee ini ?')" > Delete </a>   
                     </td>
     
       </tr>
@@ -121,7 +209,8 @@ if(isset($_GET['pesan'])){
     </div>
   </div>
 
-  <div class="footer">
+
+<div class="footer">
     <table width="100%" border="1" style="border-style: groove;">
      <tr>
        <td width="30%">
@@ -159,7 +248,7 @@ Selamat Datang : <strong><?php echo $_SESSION['nama']?></strong></font>
 </div>
 
 </div>
-  <script src='js/jquery.min.js'></script>
-  <script src="js/index.js"></script>
+
+
 </body>
 </html>
