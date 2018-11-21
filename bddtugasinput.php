@@ -7,13 +7,6 @@ if ($_SESSION['id_divisi']!="1") {
   header("location: alertlogin.php");
 }
 
-// connect to mysql
-    $conn = mysql_connect("localhost", "root", "")
-            or die("ERR: Connection");
-   
-    // connect to database       
-    $db = mysql_select_db("webmbprudb", $conn)
-          or die("ERR: Database");
 ?>
 
 <?php 
@@ -34,7 +27,7 @@ $jenis_laporan = $_POST['jenis_laporan'];
 $sql = "INSERT INTO pemberi_tugas (id_tugas, nama_bank, cabang, alamat_bank, npwp, tipe_bank, badan_usaha, jenis_pekerjaan, org_bank, email, tujuan_penilaian, jenis_laporan)
     VALUES('".$id_tugas."', '".$nama_bank."', '".$cabang."', '".$alamat_bank."', '".$npwp."', '".$tipe_bank."', '".$badan."', '".$jenis_pekerjaan."', '".$orang."', '".$email."', '".$tujuan."', '".$jenis_laporan."')"; 
     // execute query
-    $exec = mysql_query($sql, $conn); 
+    $exec = mysqli_query($koneksi, $sql); 
 
 //$sql1 = "INSERT INTO bdd (id_tugas)
    // VALUES('".$id_tugas."')"; 

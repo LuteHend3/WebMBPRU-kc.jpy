@@ -8,12 +8,7 @@ if ($_SESSION['id_divisi']!="1") {
 }
 
 // connect to mysql
-    $conn = mysql_connect("localhost", "root", "")
-            or die("ERR: Connection");
-   
-    // connect to database       
-    $db = mysql_select_db("webmbprudb", $conn)
-          or die("ERR: Database");
+    
 ?>
 
 <?php 
@@ -30,7 +25,7 @@ $total = $_POST['total'];
 $sql = "INSERT INTO fee (id_fee, pro_fee, transport, fee_bank, ppn, fee_luar, total)
     VALUES('".$id_fee."', '".$pro_fee."', '".$transport."', '".$fee_bank."', '".$ppn."', '".$fee_luar."', '".$total."')"; 
     // execute query
-    $exec = mysql_query($sql, $conn); 
+    $exec = mysqli_query($koneksi, $sql); 
 
 
 header("location:bddfee.php?pesan=input");

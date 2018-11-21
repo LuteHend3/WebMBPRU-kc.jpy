@@ -150,9 +150,9 @@ if(isset($_GET['pesan'])){
 <?php
     require_once('koneksi.php');
     
-    $result = mysql_query("SELECT * FROM karyawan JOIN divisi ON karyawan.id_divisi = divisi.id_divisi order by id_karyawan") or die(mysql_error());
+    $result = mysqli_query($koneksi,"SELECT * FROM karyawan JOIN divisi ON karyawan.id_divisi = divisi.id_divisi order by id_karyawan") or die(mysqli_error());
     $no=1; 
-    while ($data = mysql_fetch_array($result)) { //fetch the result from query into an array
+    while ($data = mysqli_fetch_array($result)) { //fetch the result from query into an array
     ?>
       <tr>
         <td><?php echo $no++; ?></td>         <!--menampilkan nomor dari variabel no-->

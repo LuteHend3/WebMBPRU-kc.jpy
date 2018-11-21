@@ -5,9 +5,9 @@ $email=$_POST['email'];
 $password=md5($_POST['password']);
 $op=$_GET['op'];
 if($op=="in"){
-	$sql=mysql_query("SELECT * FROM karyawan JOIN divisi ON karyawan.id_divisi = divisi.id_divisi WHERE email='$email'AND password='$password'");
-		if(mysql_num_rows($sql)==1){//jika berhasil akan bernilai 1
-		$qry=mysql_fetch_array($sql);
+	$sql=mysqli_query($koneksi,"SELECT * FROM karyawan JOIN divisi ON karyawan.id_divisi = divisi.id_divisi WHERE email='$email'AND password='$password'");
+		if(mysqli_num_rows($sql)==1){//jika berhasil akan bernilai 1
+		$qry=mysqli_fetch_array($sql);
 		$_SESSION['email']=$qry['email'];
 		$_SESSION['password']=$qry['password'];
 		$_SESSION['nama']=$qry['nama'];

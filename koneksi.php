@@ -1,13 +1,12 @@
 
 <?php
 
-	define('db_host','localhost');
-	define('db_user','root'); //user database
-	define('db_pass',''); //passwd database
-	define('db_name','webmbprudb');
-	
-	mysql_connect(db_host,db_user,db_pass);
-	mysql_select_db(db_name);
+$koneksi = mysqli_connect("localhost","root","","webmbprudb");
+
+// Check connection
+if (mysqli_connect_errno()){
+	echo "Koneksi database gagal : " . mysqli_connect_error();
+}
 
 //fungsi untuk mengkonversi size file
 function formatBytes($bytes, $precision = 2) { 
@@ -37,5 +36,5 @@ $menit -= $jam * 60;
 $offset = sprintf('%+d:%02d', $tanda * $jam, $menit);
 
 
-mysql_query("SET time_zone = '$offset'")
+mysqli_query($koneksi,"SET time_zone = '$offset'")
 ?>

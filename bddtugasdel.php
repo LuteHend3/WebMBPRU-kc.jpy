@@ -22,7 +22,7 @@ $id = $_GET['id_tugas'];
 
     $sql = "DELETE FROM pemberi_tugas WHERE id_tugas='$id'"; 
     // execute query
-    $exec = mysql_query($sql, $conn)or die(mysql_error());
+    $exec = mysqli_query($koneksi,$sql)or die(mysqli_error());
 
 
    // $sql1 = "UPDATE bdd SET id_tugas='$id_tugas' WHERE id_tugas='$id_tugas'"; 

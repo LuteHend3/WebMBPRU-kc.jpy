@@ -16,7 +16,7 @@ $no_spk = $_POST['no_spk'];
 $tgl= date("Y-m-d", strtotime($_POST['tgl_spk']));
 
 
-mysql_query("INSERT INTO spk VALUES('$id_spk','$no_spk','$tgl')");
+mysqli_query($koneksi,"INSERT INTO spk VALUES('$id_spk','$no_spk','$tgl')");
 
 header("location:bddspk.php?pesan=input");
 ?>

@@ -182,9 +182,9 @@ if(isset($_GET['pesan'])){
 <?php
     require_once('koneksi.php');
     
-    $result = mysql_query("SELECT * FROM fee order by id_fee") or die(mysql_error());
+    $result = mysqli_query($koneksi,"SELECT * FROM fee order by id_fee") or die(mysqli_error());
     $no=1; 
-    while ($data = mysql_fetch_array($result)) { //fetch the result from query into an array
+    while ($data = mysqli_fetch_array($result)) { //fetch the result from query into an array
     ?>
       <tr>
         <td><?php echo $no++; ?></td>         <!--menampilkan nomor dari variabel no-->

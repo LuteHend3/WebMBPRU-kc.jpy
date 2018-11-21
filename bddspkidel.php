@@ -14,6 +14,6 @@ if ($_SESSION['id_divisi']!="1") {
 <?php 
 include 'koneksi.php';
 $id = $_GET['id_spki'];
-mysql_query("DELETE FROM spki WHERE id_spki='$id'")or die(mysql_error());
+mysqli_query($koneksi,"DELETE FROM spki WHERE id_spki='$id'")or die(mysqli_error());
 header("location:bddspki.php?pesan=hapus");
 ?>

@@ -7,13 +7,6 @@ if ($_SESSION['id_divisi']!="1") {
   header("location: alertlogin.php");
 }
 
-// connect to mysql
-    $conn = mysql_connect("localhost", "root", "")
-            or die("ERR: Connection");
-   
-    // connect to database       
-    $db = mysql_select_db("webmbprudb", $conn)
-          or die("ERR: Database");
 ?>
 
 <?php 
@@ -29,7 +22,7 @@ $lb = $_POST['lb'];
 $sql = "INSERT INTO objek_penilaian (id_objek, alamat_objek, jumlah, tipe, lt, lb)
     VALUES('".$id_objek."', '".$alamat_objek."', '".$jumlah."', '".$tipe."', '".$lt."', '".$lb."')"; 
     // execute query
-    $exec = mysql_query($sql, $conn); 
+    $exec = mysqli_query($koneksi, $sql); 
 
 
 header("location:bddobjek.php?pesan=input");

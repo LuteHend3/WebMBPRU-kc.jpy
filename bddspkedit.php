@@ -65,9 +65,9 @@ if ($_SESSION['id_divisi']!="1") {
          <?php
     require_once('koneksi.php');
     $id = $_GET['id_spk'];
-    $result = mysql_query("SELECT * FROM spk WHERE id_spk='$id'") or die(mysql_error());
+    $result = mysqli_query($koneksi,"SELECT * FROM spk WHERE id_spk='$id'") or die(mysqli_error());
     $no=1; 
-    while ($data = mysql_fetch_array($result)) { //fetch the result from query into an array
+    while ($data = mysqli_fetch_array($result)) { //fetch the result from query into an array
     ?>
     <form action="bddspkupdate.php" method="POST"> 
         <div class="form-group">
@@ -176,9 +176,9 @@ if(isset($_GET['pesan'])){
 <?php
     require_once('koneksi.php');
     
-    $result = mysql_query("SELECT * FROM spk order by id_spk") or die(mysql_error());
+    $result = mysqli_query($koneksi,"SELECT * FROM spk order by id_spk") or die(mysqli_error());
     $no=1; 
-    while ($data = mysql_fetch_array($result)) { //fetch the result from query into an array
+    while ($data = mysqli_fetch_array($result)) { //fetch the result from query into an array
     ?>
       <tr>
         <td><?php echo $no++; ?></td>         <!--menampilkan nomor dari variabel no-->

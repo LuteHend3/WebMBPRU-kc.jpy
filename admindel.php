@@ -13,6 +13,6 @@ if ($_SESSION['id_divisi']!="5") {
 <?php 
 include 'koneksi.php';
 $id = $_GET['id_karyawan'];
-mysql_query("DELETE FROM karyawan WHERE id_karyawan='$id'")or die(mysql_error());
+mysqli_query($koneksi,"DELETE FROM karyawan WHERE id_karyawan='$id'")or die(mysqli_error());
 header("location:page-admin.php?pesan=hapus");
 ?>

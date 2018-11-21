@@ -16,7 +16,7 @@ $no_spki = $_POST['no_spki'];
 $tgl= date("Y-m-d", strtotime($_POST['tgl_spki']));
 
 
-mysql_query("INSERT INTO spki VALUES('$id_spki','$no_spki','$tgl')");
+mysqli_query($koneksi,"INSERT INTO spki VALUES('$id_spki','$no_spki','$tgl')");
 
 header("location:bddspki.php?pesan=input");
 ?>

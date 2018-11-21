@@ -19,7 +19,7 @@ $pass = md5($_POST['password']);
 $alamat = $_POST['alamat'];
 $telp = $_POST['no_telp'];
 
-mysql_query("INSERT INTO karyawan VALUES('$id_karyawan','$id_divisi','$nama','$jk','$email','$pass','$alamat','$telp')");
+mysqli_query($koneksi,"INSERT INTO karyawan VALUES('$id_karyawan','$id_divisi','$nama','$jk','$email','$pass','$alamat','$telp')");
 
 header("location:page-admin.php?pesan=input");
 ?>

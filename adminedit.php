@@ -44,9 +44,9 @@ if ($_SESSION['id_divisi']!="5") {
          <?php
     require_once('koneksi.php');
     $id = $_GET['id_karyawan'];
-    $result = mysql_query("SELECT * FROM karyawan WHERE id_karyawan='$id'") or die(mysql_error());
+    $result = mysqli_query($koneksi,"SELECT * FROM karyawan WHERE id_karyawan='$id'") or die(mysqli_error());
     $no=1; 
-    while ($data = mysql_fetch_array($result)) { //fetch the result from query into an array
+    while ($data = mysqli_fetch_array($result)) { //fetch the result from query into an array
     ?>
     <form action="adminupdate.php" method="POST"> 
         <div class="form-group">
@@ -115,6 +115,116 @@ if ($_SESSION['id_divisi']!="5") {
       
     </div>
   </div>
+</div>
+
+<?php 
+if(isset($_GET['pesan'])){
+  $pesan = $_GET['pesan'];
+  if($pesan == "input"){ ?>
+  <div class="alert alert-success alert-dismissible fade in" align="center">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success!</strong> Data Telah di Input
+  </div>
+  <?php
+  }else if($pesan == "update"){?>
+  <div class="alert alert-success alert-dismissible fade in" align="center">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success!</strong> Data Telah di Update
+  </div>
+  <?php
+   }else if($pesan == "hapus"){ ?>
+  <div class="alert alert-success alert-dismissible fade in" align="center">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success!</strong> Data Telah di Hapus
+  </div>
+  <?php
+  }
+}
+?>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>ID Karyawan</th>
+          <th>Nama</th>
+          <th>JK</th>
+          <th>Email</th>
+          <th>Divisi</th>
+          <th>Alamat</th>
+          <th>No. Telpon</th>
+          <th>Action</th>
+        </tr>
+
+      </thead>
+      <tbody>
+<?php
+    require_once('koneksi.php');
+    
+    $result = mysqli_query($koneksi,"SELECT * FROM karyawan JOIN divisi ON karyawan.id_divisi = divisi.id_divisi order by id_karyawan") or die(mysqli_error());
+    $no=1; 
+    while ($data = mysqli_fetch_array($result)) { //fetch the result from query into an array
+    ?>
+      <tr>
+        <td><?php echo $no++; ?></td>         <!--menampilkan nomor dari variabel no-->
+        <td><?php echo $data['id_karyawan'] ?></td>    <!--menampilkan data id_karyawan dari tabel karyawan-->
+        <td><?php echo $data['nama']?></td>
+        <td><?php echo $data['Jenis_kelamin'] ?></td>     
+        <td><?php echo $data['email'] ?></td>     
+        <td><?php echo $data['nama_divisi'] ?></td>    
+        <td><?php echo $data['alamat'] ?></td>     
+        <td><?php echo $data['no_telp'] ?></td>     
+        <td>
+                        <a href="adminedit.php?id_karyawan=<?php echo $data['id_karyawan']; ?>"> Edit</a> |
+                        <a href="admindel.php?id_karyawan=<?php echo $data['id_karyawan']; ?>" onClick="javascript: return confirm('Anda yakin akan menghapus user ini ?')" > Delete </a>   
+                    </td>
+    
+      </tr>
+      <?php 
+    }
+      ?>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+
+<div class="footer">
+    <table width="100%" border="1" style="border-style: groove;">
+     <tr>
+       <td width="30%">
+        <div align="center">
+          <?php
+$array_hari = array(1=>'Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu');
+$hari = $array_hari[date('N')];
+
+$array_bulan = array(1=>'Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember');
+$bulan = $array_bulan[date('n')];
+
+$tgl = date('j');
+$thn = date('Y'); 
+
+echo $hari.", ".$tgl." ".$bulan." ".$thn ;
+
+?> 
+
+       </div>
+     </td>
+       <td width="40%">
+        <div align="center">
+          <font color="#000000">
+Selamat Datang : <strong><?php echo $_SESSION['nama']?></strong></font>
+</div>
+</td>
+       <td width="30%">
+        <div align="center">
+       Divisi : <strong><?php echo $_SESSION['nama_divisi'] ?></strong>
+       </div>
+       </td>
+     </tr>
+   </table>
+
+</div>
+
 </div>
   <script src='js/jquery.min.js'></script>
   <script src="js/index.js"></script>
