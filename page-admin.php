@@ -6,6 +6,7 @@ if (!isset($_SESSION['email'])) {
 if ($_SESSION['id_divisi']!="5") {
   header("location: alertlogin.php");
 }
+include 'koneksi.php';
 ?>
 <html lang="en">
 <head>
@@ -28,7 +29,7 @@ if ($_SESSION['id_divisi']!="5") {
 <div class="sidebar">
   <ul>
     <li><a href="page-admin.php"><i class="fa fa-home"></i><span>Home</span></a></li>
-    <li><a href="#"><i class="fa fa-server"></i><span>Server</span></a></li>
+    <li><a href="admindivisi.php"><i class="fa fa-server"></i><span>Divisi</span></a></li>
     <li><a href="#"><i class="fa fa-calendar"></i><span>Calendar</span></a></li>
     <li><a href="#"><i class="fas fa-envelope"></i><span>Messages</span></a></li>
     <li><a href="#"><i class="fa fa-table"></i><span>Data Table</span></a></li>
@@ -55,14 +56,18 @@ if ($_SESSION['id_divisi']!="5") {
 
 
         <div class="form-group">
-       <label for="id_divisi">ID Divisi : </label>
-       <select class="form-control" id="id_divisi" name="id_divisi" required="required">
-        <option selected="">- PILIH DIVISI -</option>
-        <option value="1">Divisi BDD</option>
-        <option value="2">Divisi Keuangan</option>
-        <option value="3">Divisi Administrasi</option>
-        <option value="4">Divisi Teknik</option>
-        <option value="5">Admin</option>
+       <label for="id_divisi">Divisi : </label>
+      <select class="form-control" name="id_divisi" id="id_divisi" required="">
+    <option value="">--DIVISI--</option>
+      <?php
+      $a="SELECT * FROM divisi";
+      $sql=mysqli_query($koneksi, $a);
+      while($data=mysqli_fetch_array($sql)){
+    ?>
+      <option value="<?php echo $data['id_divisi']?>"><?php echo $data['nama_divisi']?></option>
+     <?php
+       }
+    ?>
        </select>
        </div>        
 

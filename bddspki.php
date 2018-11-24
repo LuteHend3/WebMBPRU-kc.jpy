@@ -131,9 +131,9 @@ if(isset($_GET['pesan'])){
       <thead>
         <tr>
           <th>#</th>
-          <th>ID SPK</th>
-          <th>Nomor SPK</th>
-          <th>Tanggal SPK</th>
+          <th>ID SPKI</th>
+          <th>Nomor SPKI</th>
+          <th>Tanggal SPKI</th>
 
           <th>Action</th>
         </tr>

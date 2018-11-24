@@ -11,8 +11,9 @@ if ($_SESSION['id_divisi']!="1") {
 ?>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
   <title>BDD Menu</title>
   <link rel='stylesheet' href='css/bootstrap.min.css'>
   <link rel="stylesheet" href="css/style.css">
@@ -32,14 +33,16 @@ if ($_SESSION['id_divisi']!="1") {
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
   <script src="js/index.js"></script>
 
+
 </head>
 <body>
-
   <div class="header">
   <div class="logo">
     Ini Dashboard BDD
   </div>
 </div>
+
+
 <div class="sidebar">
   <ul>
     <li><a href="page-BDD.php"><i class="fa fa-home"></i><span>Home</span></a></li>
@@ -58,7 +61,7 @@ if ($_SESSION['id_divisi']!="1") {
 <!-- Content -->
 <div class="main">
   <div class="hipsum">
-    <div class="panel-group">
+  <div class="panel-group">
   <div class="panel panel-default" >
     <div class="panel-heading" style="background-color: rgb(51, 122, 183);">
       <h4 class="panel-title">
@@ -67,24 +70,24 @@ if ($_SESSION['id_divisi']!="1") {
     </div>
     <div id="collapse1" class="panel-collapse collapse" style="margin-left: 10px; margin-right: 10px; padding-bottom: 5px; ">
       
-      <form action="bddinput.php" method="POST"> 
-        <div class="form-group">
-       <label for="id_bdd">ID BDD : </label>
-       <input type="text" class="form-control" id="id_bdd" name="id_bdd" required="required">  
-        </div>        
+      <form action="bddsuratinput.php" method="POST"> 
+
+         <div class="form-group">
+       <label for="id_surat">ID Surat : </label>
+       <input type="text" class="form-control" id="id_surat" name="id_surat" required="required">  
+        </div>         
  
 
        <div class="form-group">
-       <label for="id_surat">Surat : </label>
-      <select class="form-control" name="id_surat" id="id_surat" required="">
-    <option value="">--SURAT--</option>
-    <option value="1">1</option>
+       <label for="id_spk">SPK : </label>
+      <select class="form-control" name="id_spk" id="id_spk" required="">
+    <option value="">--SPK--</option>
       <?php
-      $a="SELECT * FROM surat";
+      $a="SELECT * FROM spk";
       $sql=mysqli_query($koneksi, $a);
       while($data=mysqli_fetch_array($sql)){
     ?>
-      <option value="<?php echo $data['id_surat']?>"><?php echo "ID Surat : "; echo $data['id_surat']?></option>
+      <option value="<?php echo $data['id_spk']?>"><?php echo "ID SPK : "; echo $data['id_spk']; echo " -- No. SPK : "; echo $data['no_spk']?></option>
      <?php
        }
     ?>
@@ -92,15 +95,15 @@ if ($_SESSION['id_divisi']!="1") {
        </div>        
 
         <div class="form-group">
-       <label for="id_tugas">Pengajuan Tugas : </label>
-      <select class="form-control" name="id_tugas" id="id_tugas" required="">
-    <option value="">--PENGAJUAN TUGAS--</option>
+       <label for="id_spki">SPKI : </label>
+      <select class="form-control" name="id_spki" id="id_spki" required="">
+    <option value="">--SPKI--</option>
       <?php
-      $a="SELECT * FROM pemberi_tugas";
+      $a="SELECT * FROM spki";
       $sql=mysqli_query($koneksi, $a);
       while($data=mysqli_fetch_array($sql)){
     ?>
-      <option value="<?php echo $data['id_tugas']?>"><?php echo "ID Tugas : "; echo $data['id_tugas']; echo " -- No. NPWP : "; echo $data['npwp']?>
+      <option value="<?php echo $data['id_spki']?>"><?php echo "ID SPKI : "; echo $data['id_spki']; echo " -- No. SPKI : "; echo $data['no_spki']?>
       </option>
      <?php
        }
@@ -109,15 +112,15 @@ if ($_SESSION['id_divisi']!="1") {
        </div>        
 
        <div class="form-group">
-       <label for="id_objek">Objek Penilaian : </label>
-      <select class="form-control" name="id_objek" id="id_objek" required="">
-    <option value="">--OBJEK PENILAIAN--</option>
+       <label for="id_surat_tugas">Surat Tugas : </label>
+      <select class="form-control" name="id_surat_tugas" id="id_surat_tugas" required="">
+    <option value="">--SURAT TUGAS--</option>
       <?php
-      $a="SELECT * FROM objek_penilaian";
+      $a="SELECT * FROM surat_tugas";
       $sql=mysqli_query($koneksi, $a);
       while($data=mysqli_fetch_array($sql)){
     ?>
-      <option value="<?php echo $data['id_objek']?>"><?php echo "ID Objek : "; echo $data['id_objek']; echo " -- Alamat "; echo $data['alamat_objek']?>
+      <option value="<?php echo $data['id_surat_tugas']?>"><?php echo "ID Surat Tugas : "; echo $data['id_surat_tugas']; echo " -- No. Surat : "; echo $data['no_surat']?>
         
       </option>
      <?php
@@ -127,20 +130,21 @@ if ($_SESSION['id_divisi']!="1") {
        </div>       
 
         <div class="form-group">
-       <label for="id_fee">Fee : </label>
-      <select class="form-control" name="id_fee" id="id_fee" required="">
-    <option value="">--FEE--</option>
+       <label for="id_opp">OPP : </label>
+      <select class="form-control" name="id_opp" id="id_opp" required="">
+    <option value="">--OPP--</option>
       <?php
-      $a="SELECT * FROM fee";
+      $a="SELECT * FROM opp";
       $sql=mysqli_query($koneksi, $a);
       while($data=mysqli_fetch_array($sql)){
     ?>
-      <option value="<?php echo $data['id_fee']?>"><?php echo "ID Fee : "; echo $data['id_fee']; echo " -- Total Rp."; echo $data['total']?></option>
+      <option value="<?php echo $data['id_opp']?>"><?php echo "ID OPP : "; echo $data['id_opp']; echo " -- No. OPP : "; echo $data['no_opp']?></option>
      <?php
        }
     ?>
        </select>
-       </div>       
+       </div>    
+
 
         <div class="form-group">
         <button type="submit" value="simpan" class="btn btn-primary">Input</button>
@@ -148,6 +152,14 @@ if ($_SESSION['id_divisi']!="1") {
         </div>     
 
   </form>
+
+   <script>
+$(document).ready(function() {
+ 
+   $('#tgl_spki').datetimepicker();
+ 
+ });
+ </script>        
   
     </div>
   </div>
@@ -180,11 +192,12 @@ if(isset($_GET['pesan'])){
       <thead>
         <tr>
           <th>#</th>
-          <th>ID BDD</th>
-          <th>ID Surat</th>     
-          <th>ID Pemberi Tugas</th>
-          <th>ID Objek Penilaian</th>
-          <th>ID Fee</th>
+          <th>ID Surat</th>
+          <th>ID SPK</th>
+          <th>ID SPKI</th>
+          <th>ID Surat Tugas</th>
+          <th>ID OPP</th>
+
           <th>Action</th>
         </tr>
 
@@ -193,25 +206,25 @@ if(isset($_GET['pesan'])){
 <?php
     require_once('koneksi.php');
     
-    $result = mysqli_query($koneksi,"SELECT * FROM bdd
-      JOIN surat ON bdd.id_surat=surat.id_surat
-      JOIN pemberi_tugas ON bdd.id_tugas=pemberi_tugas.id_tugas
-      JOIN objek_penilaian ON bdd.id_objek=objek_penilaian.id_objek
-      JOIN fee ON bdd.id_fee=fee.id_fee
-      order by bdd.id_bdd") or die(mysql_error());
+    $result = mysqli_query($koneksi,"SELECT * FROM surat 
+      JOIN spk ON surat.id_spk=spk.id_spk
+      JOIN spki ON surat.id_spki=spki.id_spki
+      JOIN surat_tugas ON surat.id_surat_tugas=surat_tugas.id_surat_tugas
+      JOIN opp ON surat.id_opp=opp.id_opp
+      order by id_surat") or die(mysqli_error());
     $no=1; 
     while ($data = mysqli_fetch_array($result)) { //fetch the result from query into an array
     ?>
       <tr>
         <td><?php echo $no++; ?></td>         <!--menampilkan nomor dari variabel no-->
-        <td><?php echo $data['id_bdd'] ?></td>    <!--menampilkan data id_karyawan dari tabel karyawan-->
-        <td><?php echo "ID Surat : "; echo $data['id_surat']?></td>     
-        <td><?php echo "ID Tugas : "; echo $data['id_tugas']; echo " -- No. NPWP : "; echo $data['npwp']?></td>     
-        <td><?php echo "ID Objek : "; echo $data['id_objek']; echo " -- Alamat "; echo $data['alamat_objek']?></td> 
-        <td><?php echo "ID Fee : "; echo $data['id_fee']; echo " -- Total Rp."; echo $data['total']?></td>     
+        <td><?php echo $data['id_surat'] ?></td>    <!--menampilkan data id_karyawan dari tabel karyawan-->
+        <td><?php echo "ID SPK : "; echo $data['id_spk']; echo " -- No. SPK : "; echo $data['no_spk']?></td>
+        <td><?php echo "ID SPKI : "; echo $data['id_spki']; echo " -- No. SPKI : "; echo $data['no_spki']?></td>        
+        <td><?php echo "ID Surat Tugas : "; echo $data['id_surat_tugas']; echo " -- No. Surat : "; echo $data['no_surat']?></td>        
+        <td><?php echo "ID OPP : "; echo $data['id_opp']; echo " -- No. OPP : "; echo $data['no_opp']?></td>        
         <td>
-                        <a href="bddedit.php?id_bdd=<?php echo $data['id_bdd']; ?>"> Edit </a> |
-                        <a href="bdddel.php?id_bdd=<?php echo $data['id_bdd']; ?>" onClick="javascript: return confirm('Anda yakin akan menghapus data ini ?')" > Delete </a>   
+                        <a href="bddsuratedit.php?id_surat=<?php echo $data['id_surat']; ?>"> Edit</a> |
+                        <a href="bddsuratdel.php?id_surat=<?php echo $data['id_surat']; ?>" onClick="javascript: return confirm('Anda yakin akan menghapus Surat ini ?')" > Delete </a>   
                     </td>
     
       </tr>
@@ -223,7 +236,8 @@ if(isset($_GET['pesan'])){
     </div>
   </div>
 
-  <div class="footer">
+
+<div class="footer">
     <table width="100%" border="1" style="border-style: groove;">
      <tr>
        <td width="30%">
@@ -261,7 +275,7 @@ Selamat Datang : <strong><?php echo $_SESSION['nama']?></strong></font>
 </div>
 
 </div>
-  <script src='js/jquery.min.js'></script>
-  <script src="js/index.js"></script>
+
+
 </body>
 </html>

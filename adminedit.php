@@ -55,18 +55,20 @@ if ($_SESSION['id_divisi']!="5") {
         </div>        
 
 
-        <div class="form-group">
-       <label for="id_divisi">ID Divisi : </label>
-       <?php $id_divisi = $data['id_divisi']; ?>
+       <div class="form-group">
+       <label for="id_divisi">Divisi : </label>
        <select class="form-control" id="id_divisi" name="id_divisi" required="required">
-        <option>- PILIH DIVISI -</option>
-        <option value="1" <?php echo ($id_divisi == '1') ? "selected": "" ?>>Divisi BDD</option>
-        <option value="2" <?php echo ($id_divisi == '2') ? "selected": "" ?>>Divisi Keuangan</option>
-        <option value="3" <?php echo ($id_divisi == '3') ? "selected": "" ?>>Divisi Administrasi</option>
-        <option value="4" <?php echo ($id_divisi == '4') ? "selected": "" ?>>Divisi Teknik</option>
-        <option value="5" <?php echo ($id_divisi == '5') ? "selected": "" ?>>Admin</option>
+                <option>- DIVISI -</option>
+                 <?php
+      $adv="SELECT * FROM divisi";
+      $sqldv=mysqli_query($koneksi, $adv);
+      $id_divisi = $datadv['id_divisi'];
+     while($datadv=mysqli_fetch_array($sqldv)){
+  ?>
+        <option value="<?php echo $datadv['id_divisi']; ?>" <?php if ($id_divisi == $data['id_divisi']) { echo 'selected'; } ?>><?php echo $datadv['nama_divisi']?></option>
+<?php } ?>
        </select> 
-        </div>        
+        </div>             
 
         <div class="form-group">
        <label for="nama">Nama : </label>
