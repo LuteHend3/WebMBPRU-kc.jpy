@@ -42,17 +42,29 @@ if ($_SESSION['id_divisi']!="1") {
 </div>
 <div class="sidebar">
   <ul>
-    <li><a href="page-BDD.php"><i class="fa fa-home"></i><span>Home</span></a></li>
-    <li><a href="#"><i class="fas fa-tasks"></i><span>Pengajuan</span></a></li>
-    <li><a href="bddspki.php"><i class="far fa-envelope"></i><span>Surat Perintah Kerja Internal</span></a></li>
-    <li><a href="bddspk.php"><i class="fas fa-envelope"></i><span>Surat Perintah Kerja</span></a></li>
+    <li><a href="page-BDD.php"><i class="fa fa-home"></i><strong><span>Home</span></strong></a></li>
+
+    <li><a href="#pageSubtugas" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-tasks"></i><strong><span>Pengajuan</span></strong><i class="fas fa-caret-square-down"></i></a>
+      <ul class="collapse list-unstyled" id="pageSubtugas">
     <li><a href="bddtugas.php"><i class="fa fa-calendar"></i><span>Pengajuan Tugas</span></a></li>
     <li><a href="bddobjek.php"><i class="fas fa-archway"></i><span>Objek Penilaian</span></a></li>
-    <li><a href="bddfee.php"><i class="fas fa-dollar-sign"></i><span>Fee</span></a></li>
+    </li>
+    </ul>
+   
+     <li><a href="#pageSubsurat" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-tasks"></i><strong><span>Surat</span></strong><i class="fas fa-caret-square-down"></i></a>
+      <ul class="collapse list-unstyled" id="pageSubsurat">
+    <li><a href="bddsurat.php"><i class="fas fa-envelope"></i><span>Data Surat</span></a></li>
+    <li><a href="bddspk.php"><i class="fas fa-envelope"></i><span>Surat Perintah Kerja</span></a></li>
+    <li><a href="bddspki.php"><i class="far fa-envelope"></i><span>Surat Perintah Kerja Internal</span></a></li>
     <li><a href="bddsrttugas.php"><i class="fas fa-envelope"></i><span>Surat Tugas</span></a></li>
     <li><a href="bddopp.php"><i class="fas fa-envelope"></i><span>OPP</span></a></li>
-    <li><a href="bddsurat.php"><i class="fas fa-envelope"></i><span>Surat</span></a></li>
-    <li><a href="logout.php"><i class="fa fa-power-off" style="color:red"></i><span>Logout</span></a></li>
+     </li>
+   </ul>
+
+    <li><a href="bddfee.php"><i class="fas fa-dollar-sign"></i><strong><span>Fee</span></strong></a></li>   
+    <li><a href="logout.php"><i class="fa fa-power-off" style="color:red"></i><strong><span>Logout</span></strong></a></li>
+
+
 </div>
 
 <!-- Content -->
