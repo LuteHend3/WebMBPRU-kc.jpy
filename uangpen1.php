@@ -14,7 +14,7 @@ if ($_SESSION['id_divisi']!="2") {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Keuangan Menu</title>
-  <link rel='stylesheet' href='css/bootstrap.min.css'>
+   <link rel='stylesheet' href='css/bootstrap.min.css'>
   <link rel="stylesheet" href="css/style.css">
 
    <!-- Latest compiled and minified CSS -->
@@ -42,7 +42,7 @@ if ($_SESSION['id_divisi']!="2") {
 </div>
 <div class="sidebar">
   <ul>
-    <li><a href="page-keuangan.php"><i class="fa fa-home"></i><strong><span>Home</span></strong></a></li>
+<li><a href="page-keuangan.php"><i class="fa fa-home"></i><strong><span>Home</span></strong></a></li>
     <li><a href="uangpen1.php"><i class="fas fa-dollar-sign"></i><strong><span>Penagihan 1</span></strong></a></li> 
     <li><a href="uangpen2.php"><i class="fas fa-dollar-sign"></i><strong><span>Penagihan 2</span></strong></a></li> 
     <li><a href="#"><i class="fa fa-calendar"></i><span>Calendar</span></a></li>
@@ -63,80 +63,23 @@ if ($_SESSION['id_divisi']!="2") {
     </div>
     <div id="collapse1" class="panel-collapse collapse" style="margin-left: 10px; margin-right: 10px; padding-bottom: 5px; ">
       
-      <form action="keuanganinput.php" method="POST"> 
+      <form action="uangpen1input.php" method="POST"> 
         <div class="form-group">
-       <label for="id_keuangan">ID Keuangan : </label>
-       <input type="text" class="form-control" id="id_keuangan" name="id_keuangan" required="required">  
+       <label for="id_pen1">ID Penagihan 1 : </label>
+       <input type="text" class="form-control" id="id_pen1" name="id_pen1" required="required">  
         </div>        
 
 
-       <div class="form-group">
-       <label for="id_pen1">Penagihan 1 : </label>
-      <select class="form-control" name="id_pen1" id="id_pen1" required="">
-    <option value="">--PENAGIHAN 1--</option>
-      <?php
-      $apen1="SELECT * FROM penagihan1";
-      $sqlpen1=mysqli_query($koneksi, $apen1);
-      while($datapen1=mysqli_fetch_array($sqlpen1)){
-    ?>
-      <option value="<?php echo $datapen1['id_pen1']?>"><?php echo "ID Penagihan : "; echo $datapen1['id_pen1']; echo " -- No. Kwitansi : "; echo $datapen1['no_kwitansi']?>
-        
-      </option>
-     <?php
-       }
-    ?>
-       </select>
-       </div>       
-
-      <div class="form-group">
-       <label for="id_pen2">Penagihan 2 : </label>
-      <select class="form-control" name="id_pen2" id="id_pen2" required="">
-    <option value="">--PENAGIHAN 2--</option>
-      <?php
-      $apen2="SELECT * FROM penagihan2";
-      $sqlpen2=mysqli_query($koneksi, $apen2);
-      while($datapen2=mysqli_fetch_array($sqlpen2)){
-    ?>
-      <option value="<?php echo $datapen2['id_pen2']?>"><?php echo "ID Penagihan : "; echo $datapen2['id_pen2']; echo " -- No. Faktur : "; echo $datapen2['no_faktur']?>
-        
-      </option>
-     <?php
-       }
-    ?>
-       </select>
-       </div>        
-
-
         <div class="form-group">
-       <label for="id_pem1">Pembayaran 1 : </label>
-      <select class="form-control" name="id_pem1" id="id_pem1" required="">
-    <option value="">--Pembayaran 1--</option>
-      <?php
-      $a="SELECT * FROM pembayaran1";
-      $sql=mysqli_query($koneksi, $a);
-      while($data=mysqli_fetch_array($sql)){
-    ?>
-      <option value="<?php echo $data['id_pem1']?>"><?php echo "ID Pembayaran : "; echo $data['id_pem1']; echo " -- Jumlah Rp."; echo $data['jumlah_bayar1']?></option>
-     <?php
-       }
-    ?>
-       </select>
-       </div>        
+       <label for="no_kwitansi">Nomor Kwitansi : </label>
+       <input type="text" class="form-control" id="no_kwitansi" name="no_kwitansi" required="required">  
+        </div>  
+
+       
  <div class="form-group">
-       <label for="id_pem2">Pembayaran 2 : </label>
-      <select class="form-control" name="id_pem2" id="id_pem2" required="">
-    <option value="">--Pembayaran 2--</option>
-      <?php
-      $a="SELECT * FROM pembayaran2";
-      $sql=mysqli_query($koneksi, $a);
-      while($data=mysqli_fetch_array($sql)){
-    ?>
-      <option value="<?php echo $data['id_pem2']?>"><?php echo "ID Pembayaran : "; echo $data['id_pem2']; echo " -- Jumlah Rp."; echo $data['jumlah_bayar2']?></option>
-     <?php
-       }
-    ?>
-       </select>
-       </div>        
+       <label for="tgl_pen1">Tanggal Penagihan 1 : </label>
+       <input type="text" class="form-control" id="tgl_pen1" name="tgl_pen1" required="required">  
+        </div>   
 
         <div class="form-group">
         <button type="submit" value="simpan" class="btn btn-primary">Input</button>
@@ -144,6 +87,14 @@ if ($_SESSION['id_divisi']!="2") {
         </div>     
 
   </form>
+
+   <script>
+$(document).ready(function() {
+ 
+   $('#tgl_pen1').datetimepicker();
+ 
+ });
+ </script>  
   
     </div>
   </div>
@@ -176,11 +127,9 @@ if(isset($_GET['pesan'])){
       <thead>
         <tr>
           <th>#</th>
-          <th>ID Keuangan</th>
           <th>ID Penagihan 1</th>
-          <th>ID Penagihan 2</th>
-          <th>ID Pembayaran 1</th>     
-          <th>ID Pembayaran 2</th>
+          <th>Nomor Kwitansi</th>
+          <th>Tanggal Penagihan</th>
 
           <th>Action</th>
         </tr>
@@ -190,25 +139,19 @@ if(isset($_GET['pesan'])){
 <?php
     require_once('koneksi.php');
     
-    $result = mysqli_query($koneksi,"SELECT * FROM keuangan
-      JOIN pembayaran1 ON keuangan.id_pem1=pembayaran1.id_pem1
-      JOIN pembayaran2 ON keuangan.id_pen2=pembayaran2.id_pem2
-      JOIN penagihan1 ON keuangan.id_pen1=penagihan1.id_pen1
-      JOIN penagihan2 ON keuangan.id_pen2=penagihan2.id_pen2
-      order by keuangan.id_keuangan") or die(mysql_error());
+    $result = mysqli_query($koneksi,"SELECT * FROM penagihan1 order by id_pen1") or die(mysql_error());
     $no=1; 
     while ($data = mysqli_fetch_array($result)) { //fetch the result from query into an array
     ?>
       <tr>
         <td><?php echo $no++; ?></td>         <!--menampilkan nomor dari variabel no-->
-        <td><?php echo $data['id_keuangan'] ?></td>    <!--menampilkan data id_karyawan dari tabel karyawan-->
-        <td><?php echo "ID Penagihan : "; echo $datapen1['id_pen1']; echo " -- No. Kwitansi : "; echo $datapen1['no_kwitansi']?></td> 
-        <td><?php echo "ID Penagihan : "; echo $datapen2['id_pen2']; echo " -- No. Faktur : "; echo $datapen2['no_faktur']?></td>     
-        <td><?php echo "ID Pembayaran : "; echo $data['id_pem1']; echo " -- Jumlah Rp."; echo $data['jumlah_bayar1']?></td>     
-        <td><?php echo "ID Pembayaran : "; echo $data['id_pem2']; echo " -- Jumlah Rp."; echo $data['jumlah_bayar2']?></td>     
+        <td><?php echo $data['id_pen1'] ?></td>    <!--menampilkan data id_karyawan dari tabel karyawan-->
+        <td><?php echo $data['no_kwitansi'] ?></td>
+        <td><?php echo $data['tgl_pen1'] ?></td>
+    
         <td>
-                        <a href="keuanganedit.php?id_keuangan=<?php echo $data['id_keuangan']; ?>"> Edit </a> |
-                        <a href="keuangandel.php?id_keuangan=<?php echo $data['id_keuangan']; ?>" onClick="javascript: return confirm('Anda yakin akan menghapus data ini ?')" > Delete </a>   
+                        <a href="uangpen1edit.php?id_pen1=<?php echo $data['id_pen1']; ?>"> Edit </a> |
+                        <a href="uangpen1del.php?id_pen1=<?php echo $data['id_pen1']; ?>" onClick="javascript: return confirm('Anda yakin akan menghapus data ini ?')" > Delete </a>   
                     </td>
     
       </tr>
@@ -256,6 +199,8 @@ Selamat Datang : <strong><?php echo $_SESSION['nama']?></strong></font>
    </table>
 
 </div>
+
+
 
 </body>
 </html>
